@@ -1,0 +1,32 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Rosalind.fs">
+    <Files>
+      <File FileName="Program.fs" Line="1" Column="1" />
+      <File FileName="Rosalind.fs" Line="1" Column="1" />
+      <File FileName="data/sample_deg.txt" Line="1" Column="1" />
+      <File FileName="Graph.fs" Line="1" Column="1" />
+      <File FileName="data/sample_ddeg.txt" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.rosalind>
+    <MonoDevelop.Ide.CustomExecutionModes>
+      <Data Name="With params" Id="1a14afb9-4ea0-4325-bbe4-9ac6329243f7" ModeId="Default" PromptForParameters="True">
+        <CommandData>
+          <Item Key="MonoDevelop.Ide.Execution.CustomArgsCustomizer">
+            <Value Arguments="data/sample_deg.txt" WorkingDirectory="/Users/marcusedwards/Projects/rosalind" ctype="CustomArgsExecutionModeData">
+              <EnvironmentVariables />
+            </Value>
+          </Item>
+          <Item Key="MonoDevelop.Ide.Execution.MonoExecutionCustomizer">
+            <Value ctype="MonoExecutionParameters" />
+          </Item>
+        </CommandData>
+      </Data>
+    </MonoDevelop.Ide.CustomExecutionModes>
+  </MonoDevelop.Ide.ItemProperties.rosalind>
+</Properties>

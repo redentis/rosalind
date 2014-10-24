@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "rosalind", "rosalind.fsproj", "{0C321917-8177-4740-BD4E-A6E0929F89DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C321917-8177-4740-BD4E-A6E0929F89DF}.Debug|x86.ActiveCfg = Debug|x86
+		{0C321917-8177-4740-BD4E-A6E0929F89DF}.Debug|x86.Build.0 = Debug|x86
+		{0C321917-8177-4740-BD4E-A6E0929F89DF}.Release|x86.ActiveCfg = Release|x86
+		{0C321917-8177-4740-BD4E-A6E0929F89DF}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = rosalind.fsproj
+		Policies = $0
+		$0.VersionControlPolicy = $1
+		$1.inheritsSet = Mono
+		$0.DotNetNamingPolicy = $2
+		$2.DirectoryNamespaceAssociation = None
+		$2.ResourceNamePolicy = FileFormatDefault
+		$0.TextStylePolicy = $3
+		$3.FileWidth = 120
+		$3.TabWidth = 3
+		$3.IndentWidth = 3
+		$3.inheritsSet = VisualStudio
+		$3.inheritsScope = text/plain
+		$3.scope = text/x-fsharp
+		$0.FSharpFormattingPolicy = $4
+		$4.DefaultFormat = $5
+		$5.IndentOnTryWith = False
+		$5.ReorderOpenDeclaration = False
+		$5.SpaceAfterComma = True
+		$5.SpaceAfterSemicolon = True
+		$5.SpaceAroundDelimiter = True
+		$5.SpaceBeforeArgument = True
+		$5.SpaceBeforeColon = True
+		$5.SemicolonAtEndOfLine = False
+		$4.scope = text/x-fsharp
+	EndGlobalSection
+EndGlobal
