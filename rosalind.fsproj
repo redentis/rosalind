@@ -19,7 +19,6 @@
     <Tailcalls>false</Tailcalls>
     <PlatformTarget>x86</PlatformTarget>
     <Externalconsole>true</Externalconsole>
-    <Commandlineparameters>/Users/marcusedwards/Projects/rosalind/data/sample_deg.txt</Commandlineparameters>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugSymbols>false</DebugSymbols>
@@ -40,44 +39,51 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Rosalind.fs" />
+    <Compile Include="Rosalind.fs">
+    </Compile>
     <Compile Include="Consensus.fs" />
     <Compile Include="FASTA.fs" />
     <Compile Include="Graph.fs" />
-    <Compile Include="Program.fs" />
+    <None Include="scratch.fsx" />
+    <Compile Include="Program.fs">
+    </Compile>
+    <None Include="data\rosalind_bins.txt" />
+    <None Include="data\rosalind_cons.txt" />
+    <None Include="data\rosalind_deg.txt" />
+    <None Include="data\rosalind_dna.txt" />
+    <None Include="data\rosalind_fib.txt" />
+    <None Include="data\rosalind_fibd.txt" />
+    <None Include="data\rosalind_fibo.txt" />
+    <None Include="data\rosalind_gc.txt" />
+    <None Include="data\rosalind_hamm.txt" />
+    <None Include="data\rosalind_iprb.txt" />
+    <None Include="data\rosalind_lcsm.txt" />
+    <None Include="data\rosalind_perm.txt" />
+    <None Include="data\rosalind_prot.txt" />
+    <None Include="data\rosalind_revc.txt" />
+    <None Include="data\rosalind_revp.txt" />
+    <None Include="data\rosalind_splc.txt" />
+    <None Include="data\rosalind_subs.txt" />
+    <None Include="data\rosalind_tran-1.txt" />
+    <None Include="data\rosalind_tran.txt" />
+    <None Include="data\sample.txt" />
+    <None Include="data\sample_bins.txt" />
+    <None Include="data\sample_cons.txt" />
+    <None Include="data\sample_ddeg.txt" />
+    <None Include="data\sample_deg.txt" />
+    <None Include="data\sample_fasta.txt" />
+    <None Include="data\sample_fibd.txt" />
+    <None Include="data\sample_lcsm.txt" />
+    <None Include="data\sample_lcsm_2.txt" />
+    <None Include="data\sample_prot.txt" />
+    <None Include="data\sample_revp.txt" />
+    <None Include="data\sample_splc.txt" />
+    <None Include="data\sample_subs.txt" />
+    <None Include="data\sample_tran.txt" />
+    <Compile Include="SuffixTree.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.1\Framework\v4.0\Microsoft.FSharp.Targets" />
   <ItemGroup>
     <Folder Include="data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="data\rosalind_cons.txt" />
-    <None Include="data\rosalind_dna.txt" />
-    <None Include="data\rosalind_fib.txt" />
-    <None Include="data\rosalind_fibd.txt" />
-    <None Include="data\rosalind_gc.txt" />
-    <None Include="data\rosalind_hamm.txt" />
-    <None Include="data\rosalind_iprb.txt" />
-    <None Include="data\rosalind_prot.txt" />
-    <None Include="data\rosalind_revc.txt" />
-    <None Include="data\rosalind_splc.txt" />
-    <None Include="data\rosalind_splc.txt.old" />
-    <None Include="data\rosalind_splc.txtbackup" />
-    <None Include="data\rosalind_splc_1_output.txt" />
-    <None Include="data\rosalind_subs.txt" />
-    <None Include="data\rosalind_tran.txt" />
-    <None Include="data\sample.txt" />
-    <None Include="data\sample_cons.txt" />
-    <None Include="data\sample_facta.txt" />
-    <None Include="data\sample_fasta.txt" />
-    <None Include="data\sample_fibd.txt" />
-    <None Include="data\sample_prot.txt" />
-    <None Include="data\sample_splc.txt" />
-    <None Include="data\sample_subs.txt" />
-    <None Include="data\sample_tran.txt" />
-    <None Include="data\sample_revp.txt" />
-    <None Include="data\sample_bins.txt" />
-    <None Include="data\sample_deg.txt" />
-    <None Include="data\sample_ddeg.txt" />
   </ItemGroup>
 </Project>

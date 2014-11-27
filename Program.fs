@@ -1,4 +1,5 @@
 ﻿open System
+open System.Diagnostics
 open Rosalind
 
 let readia () = Console.ReadLine().Split() |> Array.map int
@@ -13,7 +14,6 @@ let lineSeq (r:System.IO.TextReader) :string seq =
 
 [<EntryPoint>]
 let main argv =
-
 (*
   // Test FASTA & GC
   let records = System.Console.In |> FASTA.parse
@@ -110,7 +110,7 @@ let main argv =
   |> DNA.findRestrictionSites
   |> Seq.iter (fun (i, site) -> printfn "%d %d" (i+1) (String.length site))
 *)
-  
+ (* 
   // Test graph node degree: deg, ddeg
   printfn "argv=%A" argv
   let (src:System.IO.TextReader) = match Array.length argv with
@@ -127,8 +127,56 @@ let main argv =
   graph
   |> Graph.degrees
   |> List.iter (fun (_, count) -> printf "%u " count)
+*)
+(* Testing DNA.indexOf
+   let src = DNA.fromString "GATTACA"
+
+   Debug.Assert(Option.isNone (DNA.indexOf [||] src), "Failed: empty target")
+   Debug.Assert(Option.isNone (DNA.indexOf src [||]), "Failed: empty source")
+
+   let t3 = DNA.indexOf (DNA.fromString "GA") src
+   Debug.Assert(Option.isSome t3 && Option.get t3 = 0, "Failed: didn't find leading characters");
+
+   let t4 = DNA.indexOf (DNA.fromString "GATTACAGATTACA") src
+   Debug.Assert(Option.isNone t4, "Failed: target is longer than source");
+
+   let t5 = DNA.indexOf src src
+   Debug.Assert(Option.isSome t5 && Option.get t5 = 0, "Failed: didn't find src in src");
+
+   let t6 = DNA.indexOf (DNA.fromString "CA") src
+   Debug.Assert(Option.isSome t6 && Option.get t6 = 5, "Failed: didn't find trailing characters");
+
+   let t7 = DNA.indexOf (DNA.fromString "C") src
+   Debug.Assert(Option.isSome t7 && Option.get t7 = 5, "Failed: didn't find single character");
+
+   let t8 = DNA.indexOf (DNA.fromString "TTA") src
+   Debug.Assert(Option.isSome t8 && Option.get t8 = 2, "Failed: didn't find  character in the middle");
+
+   let t9 = DNA.indexOf (DNA.fromString "ACATTAG") src
+   Debug.Assert(Option.isNone t9 , "Failed: full length non-matching string");
+
+   let t10 = DNA.indexOf (DNA.fromString "XYZ") src
+   Debug.Assert(Option.isNone t10, "Failed: non-matching string");
+*)
+
+   // Test longest substrings
+   let (src:System.IO.TextReader) = match Array.length argv with
+                                    | n when n >= 1 -> upcast new System.IO.StreamReader(argv.[0])
+                                    | _             -> System.Console.In
+//   let src = new System.IO.StreamReader("../../data/rosalind_lcsm.txt")
+   let strings =
+      src
+      |> FASTA.parse
+      |> Seq.map (FASTA.dna)
+      |> List.ofSeq
+      |> DNA.subStrings
+   let lcsm =
+      strings
+      |> Seq.maxBy (DNA.length)
+      |> DNA.toString
 
 
-  0
+   printfn "longest sub-string=%s" lcsm
 
-  List.iter
+   0
+

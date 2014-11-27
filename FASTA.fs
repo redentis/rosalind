@@ -25,7 +25,7 @@ module Rosalind.FASTA
         | -1 -> Some line.[1..],  None
         | n  -> Some line.[1..n], Some line.[n+1..]
     let parseSequences () =
-      let rec aux (dnas:DNA.T list) =
+      let rec aux (dnas:string list) =
         match r.Peek() with
           | -1 | 62 -> dnas |> List.rev |> List.reduce (+)
           | _ -> let dna=r.ReadLine()
@@ -37,7 +37,7 @@ module Rosalind.FASTA
             | -1  -> ()
             | 62  -> let i, d = parseHeader ()
                      let dna = parseSequences ()
-                     yield {id=i; description=d; dna=dna}
+                     yield {id=i; description=d; dna=DNA.fromString dna}
                      yield! scanLines ()
             | _   -> r.ReadLine() |> ignore
                      yield! scanLines ()

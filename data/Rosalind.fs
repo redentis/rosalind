@@ -1,5 +1,4 @@
 namespace Rosalind
-open System.Diagnostics
 
 module Util = 
    let reverseJoinF xs f = 
@@ -87,14 +86,12 @@ module DNA =
       | [||], _ | _, [||] -> None
       | _                 -> let mt = (length target)-1
                              let ms = (length src)-1
-                             if mt > ms then None
-                             else
-                                let rec aux t s :int option =
-                                   if t > mt then Some (s-mt-1)
-                                   else if s > ms then None
-                                   else
-                                     if target.[t] = src.[s] then aux (t+1) (s+1) else aux 0 (s+1)
-                                aux 0 0
+                             let rec aux t s :int option =
+                                if t > mt then Some (s-mt-1)
+                                else if s > ms then None
+                                else
+                                  if target.[t] = src.[s] then aux (t+1) (s+1) else aux 0 (s+1)
+                             aux 0 0
 
    // Return the reverse compliment of the given DNA string.
    let reverseComplement (dna : T) : T = 
@@ -216,47 +213,24 @@ module DNA =
       }
 
    let subStrings (dnas:T list) =
-      let initialCandidates (a:T) (b:T) =
-//         printfn "a=%s; b=%s" (toString a) (toString b)
-         let l = length a - 1
-         let searched = new System.Collections.Generic.HashSet<T>(Collections.HashIdentity.Structural)
-         let results = new System.Collections.Generic.HashSet<T>(Collections.HashIdentity.Structural)
-         for i in 0..(l-1) do
-           for j in (i+1)..l do
-              let test = a.[i..j]
-              if not (searched.Contains(test)) then
-                 searched.Add test |> ignore
-                 let found = indexOf test b
-
-                 if Option.isSome found then
-                    Debug.WriteLine(sprintf "Found %s at %d" (toString test) (found.Value))
-                    let m = Option.get found
-                    let n = m + (length test) - 1
-                    Debug.Assert(b.[m..n] = test, "Found string does not match")
-                    results.Add test |> ignore
-         results
-         
-      let rec search (_dnas:T list) candidates =
+      let initialCandidates (a:T) (b:T) :T list =
+         printfn "a=%s; b=%s" (toString a) (toString b)
+         let l = length b - 1
+         [ for i in 0..(l-1) do
+              for j in (i+1)..l do
+                 let test = b.[i..j]
+                 printfn "   testing %s" (toString test)
+                 if Option.isSome (indexOf test a) then yield test]
+      let rec search (_dnas:T list) (candidates:T list) :T list =
          match _dnas, candidates with
-         | _, s when Seq.isEmpty s  -> Seq.empty
+         | _, []   -> []
          | [], c   -> c
-         | h::t, c -> // printfn "Testing %d candidates" (Seq.length c)
-                      search t (c |> Seq.filter (fun e -> Option.isSome (indexOf e h)))
-
+         | h::t, c -> search t (c |> List.filter (fun e -> match (indexOf e h) with | Some _ -> true | None -> false))
       match dnas with
-      | [] | [_]-> Seq.empty
-      | a::b::r -> let c = initialCandidates a b
-                   // c |> List.iter (fun e -> printfn "%s" (toString e))
+      | [] | [_]-> []
+      | a::b::r -> let c = (initialCandidates a b)@(initialCandidates b a)
+                   c |> List.iter (fun e -> printfn "%s" (toString e))
                    search r c
-
-   let lcs (left:T) (right:T) =
-      let rec aux m n =
-         match m,n with
-         | 0,_ | _,0 -> 0
-         | _         -> if left.[m] = right.[n] then 1 + aux (m-1) (n-1)
-                        else max (aux m (n-1)) (aux (m-1) n)
-      aux (length left) (length right)
-
 module Protein = 
    type T = string
 
